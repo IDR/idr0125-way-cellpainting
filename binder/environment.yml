@@ -1,0 +1,12 @@
+channels:
+  - conda-forge
+dependencies:
+  - python ~= 3.9.0
+  - dask
+  - ipywidgets
+  - matplotlib
+  - pip
+  - scikit-image
+  - pip:
+    - ome-zarr
+    - dask-image
