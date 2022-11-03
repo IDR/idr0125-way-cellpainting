@@ -13,14 +13,18 @@
 # $ python scripts/s3_sync.py
 
 # This will output 2 commands. The first does the download.
-# the 2nd command 
+# the 2nd command counts the .zarray items in each plate. Should be 3456 in each
 
-plates_yml = "docs/_data/plates.yml"
-command = """aws s3 sync --no-sign-request --exclude '*' --include "*.z*" --include "*.xml" s3://cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr/$a $a"""
+# plates_yml = "docs/_data/plates.yml"
+# 2nd batch of 48 (which failed to import into IDR) regenerated...
+plates_yml = "docs/_data/plates_20221101.yml"
+# command = """aws s3 sync --no-sign-request --exclude '*' --include "*.z*" --include "*.xml" s3://cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr/$a $a"""
+command = """aws s3 sync --no-sign-request --exclude '*' --include "*.z*" --include "*.xml" s3://cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr_050/$a $a"""
+
 
 # Just update these numbers each time to select a different batch of plates from the list
 first_plate_index = 0
-batch_size = 20
+batch_size = 50
 
 plates = []
 with open(plates_yml) as f:
