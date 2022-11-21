@@ -13,7 +13,7 @@ From each Well you can follow the `V` icon to open the Well in vizarr.
 
 {% for plate in site.data.plates %}
   <li>
-    <a href="https://ome.github.io/ome-ngff-validator/?source=https://cellpainting-gallery.s3.amazonaws.com/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr/{{ plate }}">
+    <a href="https://ome.github.io/ome-ngff-validator/?source=https://cellpainting-gallery.s3.amazonaws.com/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr{% if plate in site.data.plates_20221101 %}_050{% endif %}/{{ plate }}">
       {{ plate }}
     </a>
   </li>
