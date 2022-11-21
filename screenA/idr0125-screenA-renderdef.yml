@@ -1,0 +1,28 @@
+
+
+---
+
+channels:
+  1:
+    min: 200
+    max: 32000
+    color: "0000FF"
+    active: true
+  2:
+    min: 400
+    max: 30000
+    color: "00FF00"
+    active: true
+  3:
+    min: 100
+    max: 8000
+    active: false
+  4:
+    min: 400
+    max: 8000
+    active: false
+  5:
+    min: 507
+    max: 8173
+    color: "FF000"
+    active: true

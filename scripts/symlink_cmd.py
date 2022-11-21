@@ -18,7 +18,7 @@ with open(file_path) as f:
 
 # paths = paths[30:]
 
-# print("sudo -u omero-server -s")
+print("sudo -u omero-server -s")
 
 for line in paths:
     import_dir = line.split("/SQ0")[0]
@@ -28,6 +28,7 @@ for line in paths:
     if "2022-11" in import_dir:
         s3_plates_dir = batch2_dir
 
+    print(f"echo {plate_name}")
     print(f"cd /data/OMERO/ManagedRepository/{import_dir}")
     print(f"rm -rf {plate_name}")
     print(f"ln -s {batch1_dir}{plate_name} {plate_name}")
