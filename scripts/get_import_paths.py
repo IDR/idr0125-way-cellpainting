@@ -3,7 +3,8 @@ import requests
 
 SERVER = "http://localhost:1080/"
 
-plates_url = SERVER + "webclient/api/plates/?id=3052"
+screen_id = 3054
+plates_url = SERVER + f"webclient/api/plates/?id={screen_id}"
 
 plates_json = requests.get(plates_url).json()
 
@@ -21,4 +22,4 @@ for plate in plates_json["plates"]:
     # "demo_2/Blitz-0-Ice.ThreadPool.Server-11/2022-10/06/09-46-37.995/SQ00014812__2016-05-23T20_44_31-Measurement1.ome.zarr/H/13/0/.zattrs"
     path_to_plate = first_path.split("ome.zarr")[0]
 
-    print(path_to_plate)
+    print(path_to_plate + "ome.zarr")
