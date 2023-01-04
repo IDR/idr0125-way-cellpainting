@@ -11,11 +11,10 @@
 
     $ omero import --depth=100 --bulk screenA/idr0125-screenA-bulk.yml --file /tmp/idr0125.log  --errs /tmp/idr0125.err
 
- - Need to view an image from each plate OR `omero render set Image:ID rdef.yml` for each plate, to avoid subsequent ResourceError after symlinking.
+ - Need to view an image from each plate OR `omero render set Image:ID rdef.yml` for each plate, to avoid subsequent ResourceError after symlinking. See `scripts/render_set_cmd.py`
 
  - Ran `scripts/get_import_paths.py` to create `imported_paths.txt` with the managed repo path for each imported plate.
 
  - Ran `scripts/symlink_cmd.py` which consumes `imported_paths.txt` to output the commands to replace each plate in the managed repo with a symlink to the corresponding plate on a mounted s3 bucket.
 
  - Ran `omero render set Plate:ID` for every plate. NB: takes ~12hrs per plate? TBD: split this job between several parallel processes.
- 
