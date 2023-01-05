@@ -3,7 +3,7 @@ import requests
 
 SERVER = "http://localhost:1080/"
 
-screen_id = 3054
+screen_id = 3055
 plates_url = SERVER + f"webclient/api/plates/?id={screen_id}"
 
 plates_json = requests.get(plates_url).json()

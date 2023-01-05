@@ -9,8 +9,7 @@
 # ln -s /cellpainting-gallery/cpg0004-lincs/broad/images_zarr/2016_04_01_a549_48hr_batch1/images/SQ00015233__2016-05-12T05_47_03-Measurement1.ome.zarr SQ00015233__2016-05-12T05_47_03-Measurement1.ome.zarr
 
 file_path = "imported_paths.txt"
-batch1_dir = "/cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr/"
-batch2_dir = "/cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr_050/"
+s3_plates_dir = "/cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr/"
 
 paths = []
 with open(file_path) as f:
@@ -23,15 +22,11 @@ print("sudo -u omero-server -s")
 for line in paths:
     import_dir = line.split("/SQ0")[0]
     plate_name = "SQ0" + line.split("/SQ0")[1]
-    s3_plates_dir = batch1_dir
-    # later import of regenerated plates 
-    if "2022-11" in import_dir:
-        s3_plates_dir = batch2_dir
 
     print(f"echo {plate_name}")
     print(f"cd /data/OMERO/ManagedRepository/{import_dir}")
     print(f"rm -rf {plate_name}")
-    print(f"ln -s {batch1_dir}{plate_name} {plate_name}")
+    print(f"ln -s {s3_plates_dir}{plate_name} {plate_name}")
 
 
 for line in paths:
