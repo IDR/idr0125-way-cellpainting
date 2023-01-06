@@ -1,4 +1,4 @@
-sudo -u omero-server -s
+#!/bin/bash
 echo SQ00014812__2016-05-23T20_44_31-Measurement1.ome.zarr
 cd /data/OMERO/ManagedRepository/demo_2/Blitz-0-Ice.ThreadPool.Server-83/2022-12/14/10-51-00.924
 rm -rf SQ00014812__2016-05-23T20_44_31-Measurement1.ome.zarr

@@ -20,8 +20,8 @@ plates_yml = "docs/_data/plates.yml"
 command = """aws s3 sync --no-sign-request --exclude '*' --include "*.z*" --include "*.xml" s3://cellpainting-gallery/cpg0004-lincs/broad/images/2016_04_01_a549_48hr_batch1/images_zarr/$a $a"""
 
 # Just update these numbers each time to select a different batch of plates from the list
-first_plate_index = 0
-batch_size = 10
+first_plate_index = 118
+batch_size = 30
 
 plates = []
 with open(plates_yml) as f:

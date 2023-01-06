@@ -9,12 +9,12 @@ SERVER = "http://localhost:1080/"
 
 # deploy webclient at SERVER address above (public)
 # $ cd scripts
-# $ python render_set_cmd.py
+# $ python render_set_image_cmd.py
 
-# Copy the final printed command...
+# Copy the final printed command, ssh to pilot or idr server and...
 
 # cd /uod/idr/idr0125-way-cellpainting
-# screen -S rende
+# screen -S idr0125_render_set_cmd
 # source /opt/omero/server/venv3/bin/activate
 # omero login
 # paste the command from above

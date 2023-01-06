@@ -17,7 +17,11 @@ with open(file_path) as f:
 
 # paths = paths[30:]
 
+# Run this before running: $ bash ./symlinks.bash
 print("sudo -u omero-server -s")
+
+# Put everything after this into symlinks.bash
+print("\n#!/bin/bash")
 
 for line in paths:
     import_dir = line.split("/SQ0")[0]
