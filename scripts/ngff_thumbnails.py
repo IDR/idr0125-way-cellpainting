@@ -16,7 +16,6 @@ plate_yml_url = "https://raw.githubusercontent.com/IDR/idr0125-way-cellpainting/
 
 yml_text = requests.get(plate_yml_url).text
 plate_names = yaml.safe_load(yml_text)
-plate_names = name
 
 
 OUT_DIR = "thumbnails" 
