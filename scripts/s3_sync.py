@@ -26,7 +26,6 @@ batch_size = 30
 plates = []
 with open(plates_yml) as f:
     plates = [line.replace("- ", "").strip() for line in f.readlines()]
-    plates = [line.split("/")[1] for line in plates]
 
 plate_names = " ".join(plates[first_plate_index: first_plate_index + batch_size])
 
