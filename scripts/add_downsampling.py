@@ -3,6 +3,7 @@ import os
 import argparse
 import dask.array as da
 from zarr.storage import FSStore
+import zarr
 from zarr.hierarchy import open_group
 
 from ome_zarr.dask_utils import resize as da_resize
@@ -19,14 +20,32 @@ def open_store(name, mode="a"):
         mode=mode,
     )
 
-def add_resolution_to_image(path_to_zarr, factor):
+def add_resolution(path_to_zarr, factor):
 
     store = open_store(path_to_zarr)
     img_root = open_group(store)
 
-    img_attrs = img_root.attrs.asdict()
-    print(img_attrs)
+    root_attrs = img_root.attrs.asdict()
+    # print(root_attrs)
+    if "plate" in root_attrs:
+        # Go through each Well/field...
+        wells = root_attrs["plate"]["wells"]
+        print("wells", wells)
+        for well in wells:
+            well_path = well["path"]
+            w = open_group(store, path = well_path)
+            print("w.attrs", w.attrs.asdict())
+            for img in w.attrs["well"]["images"]:
+                path_to_img = os.path.join(path_to_zarr, well_path, img["path"])
+                add_resolution_to_image(path_to_img, factor)
+    else:
+        add_resolution_to_image(path_to_zarr, factor)
 
+
+def add_resolution_to_image(path_to_zarr, factor):
+    store = open_store(path_to_zarr)
+    img_root = open_group(store)
+    img_attrs = img_root.attrs.asdict()
 
     last_path = img_attrs['multiscales'][0]['datasets'][-1]['path']
     print("last_path", last_path)
@@ -99,7 +118,7 @@ def main(args):
 
     args = parser.parse_args(args)
     print(args.zarr, args.factor)
-    add_resolution_to_image(args.zarr, args.factor)
+    add_resolution(args.zarr, args.factor)
 
 
 if __name__ == '__main__':
