@@ -24,7 +24,7 @@ SERVER = "http://localhost:1080/"
 
 # $ tail -f /tmp/renderImage.err
 
-screen_id = 3055
+screen_id = 3151
 plates_url = SERVER + f"webclient/api/plates/?id={screen_id}"
 
 plates_json = requests.get(plates_url).json()
@@ -35,7 +35,13 @@ for plate in plates_json["plates"]:
 
     wells_url = SERVER + f"webgateway/plate/{plate['id']}/0/"
     wells_json = requests.get(wells_url).json()
-    first_img_id = wells_json["grid"][0][0]['id']
+    # find first not-null Well
+    image = None
+    for row in wells_json["grid"]:
+        for col in row:
+            if image is None:
+                image = col
+    first_img_id = image['id']
     print("Image:", first_img_id)
     image_ids.append(str(first_img_id))
 
