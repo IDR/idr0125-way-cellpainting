@@ -2,6 +2,8 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/IDR/idr0125-way-cellpainting/main?urlpath=notebooks%2Fnotebooks%2Fanalyse.ipynb)
 [![Actions Status](https://github.com/IDR/idr0125-way-cellpainting/workflows/repo2docker/badge.svg)](https://github.com/IDR/idr0125-way-cellpainting/actions)
 
+Data hosted on cellpainting-gallery `s3` can be browsed at https://idr.github.io/idr0125-way-cellpainting/.
+
 
 # Import workflow
 
